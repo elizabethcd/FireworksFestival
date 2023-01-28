@@ -1100,5 +1100,16 @@
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/MagnesiumSalt"
     }
+  },
+
+  // Shop entries
+  {
+    "$ItemType": "ShopEntry",
+    "ShopId": "STF.violetlizabet.FireworkShop",
+    "Item": {
+      "Type": "DGARecipe",
+      "Value": "violetlizabet.FireworksFestival/FireworksFestivalPurpleFirework"
+    },
+    "Cost": 10000
   }
 ]

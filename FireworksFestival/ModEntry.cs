@@ -10,6 +10,7 @@ using StardewValley.Locations;
 using StardewValley.Menus;
 using StardewValley.Minigames;
 using HarmonyLib;
+using Microsoft.Xna.Framework.Graphics;
 
 namespace FireworksFestival
 {
@@ -26,7 +27,9 @@ namespace FireworksFestival
         private static IMonitor monitor;
 
         // Shop stocks
-
+        private static Dictionary<ISalable, int[]> blueBoatStock;
+        private static Dictionary<ISalable, int[]> purpleBoatStock;
+        private static Dictionary<ISalable, int[]> brownBoatStock;
 
         /*********
         ** Public methods
@@ -80,6 +83,9 @@ namespace FireworksFestival
         private void OnDayStarted(object sender, DayStartedEventArgs e)
         {
             hasReceivedFreeGift = false;
+            blueBoatStock = getBlueBoatStock();
+            purpleBoatStock = getPurpleBoatStock();
+            brownBoatStock = getBrownBoatStock();
         }
 
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
@@ -130,21 +136,21 @@ namespace FireworksFestival
                 // Fried foods shop
                 else if (e.Cursor.GrabTile.X == 19 && e.Cursor.GrabTile.Y == 33)
                 {
-                    Game1.activeClickableMenu = new ShopMenu(getBlueBoatStock());
+                    Game1.activeClickableMenu = new ShopMenu(blueBoatStock);
                 }
 
                 // Fireworks shop
                 else if (e.Cursor.GrabTile.X == 25 && e.Cursor.GrabTile.Y == 39)
-                {                    
-                    Game1.activeClickableMenu = new ShopMenu(getPurpleBoatStock());
+                {
+                    ShopMenu purpleShop = new ShopMenu(purpleBoatStock, 0, null, null, null, "STF.violetlizabet.FireworkShop");
+                    purpleShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie", 0, 16, 32), new Vector2(1088f, 3712f), "IslandWest", 3, "Birdie", datable: false, null, Game1.content.Load<Texture2D>("Portraits\\Birdie"));
+                    Game1.activeClickableMenu = purpleShop;
                 }
 
                 // Fruits shop
                 else if ((e.Cursor.GrabTile.X == 47 || e.Cursor.GrabTile.X == 48) && e.Cursor.GrabTile.Y == 34)
                 {
-                    Dictionary<ISalable, int[]> shopStock = new Dictionary<ISalable, int[]>();
-                    shopStock.Add(new StardewValley.Object(268, 1), new int[2] { 1000, 1 });
-                    Game1.activeClickableMenu = new ShopMenu(shopStock);
+                    Game1.activeClickableMenu = new ShopMenu(brownBoatStock);
                 }
 
                 // Yukata shop
@@ -220,20 +226,13 @@ namespace FireworksFestival
         private Dictionary<ISalable, int[]> getPurpleBoatStock()
         {
             Dictionary<ISalable, int[]> stock = new Dictionary<ISalable, int[]>();
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/RedFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/OrangeFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/YellowFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/GreenFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/BlueFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/PurpleFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/WhiteFirework"), new int[2] { 5000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalRedFirework"), new int[2] { 10000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalOrangeFirework"), new int[2] { 10000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalYellowFirework"), new int[2] { 10000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalGreenFirework"), new int[2] { 10000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalBlueFirework"), new int[2] { 10000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalPurpleFirework"), new int[2] { 10000, 1 });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksFestivalWhiteFirework"), new int[2] { 10000, 1 });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/RedFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/OrangeFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/YellowFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/GreenFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/BlueFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/PurpleFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/WhiteFirework"), new int[2] { 5000, int.MaxValue });
             return stock;
         }
 
@@ -243,8 +242,8 @@ namespace FireworksFestival
             stock.Add(new StardewValley.Object(254, 1), new int[2] { 1000, int.MaxValue });
             stock.Add(new StardewValley.Object(400, 1), new int[2] { 1000, int.MaxValue });
             stock.Add(new StardewValley.Object(398, 1), new int[2] { 1000, int.MaxValue });
-            stock.Add(new StardewValley.Object(636, 1), new int[2] { 10000, int.MaxValue });
-            stock.Add(new StardewValley.Object(268, 1), new int[2] { 25000, int.MaxValue });
+            stock.Add(new StardewValley.Object(636, 1), new int[2] { 5000, 1 });
+            stock.Add(new StardewValley.Object(268, 1), new int[2] { 5000, 1 });
             return stock;
         }
     }
