@@ -1,0 +1,80 @@
+﻿[
+  // Fireworks
+  {
+    "$ItemType": "Object",
+    "ID": "RedFirework",
+    "Texture": "fireworks.png:0",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_red" ]
+  },
+  {
+    "$ItemType": "Object",
+    "ID": "OrangeFirework",
+    "Texture": "fireworks.png:1",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_orange" ]
+  },
+  {
+    "$ItemType": "Object",
+    "ID": "YellowFirework",
+    "Texture": "fireworks.png:2",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_yellow" ]
+  },
+  {
+    "$ItemType": "Object",
+    "ID": "GreenFirework",
+    "Texture": "fireworks.png:3",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_green" ]
+  },
+  {
+    "$ItemType": "Object",
+    "ID": "BlueFirework",
+    "Texture": "fireworks.png:4",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_blue" ]
+  },
+  {
+    "$ItemType": "Object",
+    "ID": "PurpleFirework",
+    "Texture": "fireworks.png:5",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_purple" ]
+  },
+  {
+    "$ItemType": "Object",
+    "ID": "WhiteFirework",
+    "Texture": "fireworks.png:6",
+    "Category": "Crafting",
+    "SellPrice": 250,
+    "ForcePriceOnAllInstances": true,
+    "Placeable": true,
+    "UniversalGiftTaste": -20,
+    "ContextTags": [ "ingredient_firework", "color_white" ]
+  }
+]
