@@ -571,7 +571,7 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/Chemizer"
-    }
+    },
     "DynamicFields": [
       {
         "KnownByDefault": true,
@@ -580,5 +580,525 @@
         }
       }
     ]
+  },
+
+  // Machine recipes: Brimstone
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": -5, // Eggs
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/RottenEgg"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "DGAItem",
+        "Value": "violetlizabet.FireworksFestival/RottenEgg",
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/Brimstone"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 748, // Rotten Plant
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/Brimstone"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 556, // Orpiment
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/Brimstone"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 548, // Jamborite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/Brimstone"
+    }
+  },
+
+  // Machine recipes: Strontium Salt
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 566, // Celestine
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/StrontiumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 561, // Ghost Crystal
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/StrontiumSalt"
+    }
+  },
+
+  // Machine recipes: Limestone
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "ContextTag",
+        "Value": "bone_item",
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "VanillaObject",
+      "Value": 571 // Limestone
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 542, // Calcite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "VanillaObject",
+      "Value": 571 // Limestone
+    }
+  },
+
+  // Machine recipes: iron salt
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 380, // Iron ore
+        "Quantity": 5
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IronSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 335, // Iron bar
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IronSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 539, // Bixite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IronSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 559, // Pyrite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IronSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 573, // Hematite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IronSalt"
+    }
+  },
+
+  // Machine recipes: barium salt
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 540, // Baryte
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/BariumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 560, // Ocean Stone
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/BariumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 568, // Sandstone
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/BariumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 569, // Granite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/BariumSalt"
+    }
+  },
+
+  // Machine recipes: Copper Salt
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 378, // Copper ore
+        "Quantity": 5
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/CopperSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 334, // Copper bar
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/CopperSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 546, // Geminite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/CopperSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 552, // Malachite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/CopperSalt"
+    }
+  },
+
+  // Machine recipes: iridium salt
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 386, // Iridium ore
+        "Quantity": 5
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IridiumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 337, // Iridium bar
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IridiumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 578, // Star shards
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/IridiumSalt"
+    }
+  },
+
+  // Machine recipes: Magnesium salt
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 543, // Dolomite
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/MagnesiumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 572, // Soapstone
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/MagnesiumSalt"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.FireworksFestival/Chemizer",
+    "MinutesToProcess": 10,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
+        "Value": 570, // Basalt
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/MagnesiumSalt"
+    }
   }
 ]
