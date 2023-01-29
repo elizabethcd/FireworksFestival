@@ -39,6 +39,8 @@
   "object.ShavedIce.description": "A cool refreshing treat for a hot summer night.",
   "object.Yakisoba.name": "Yakisoba",
   "object.Yakisoba.description": "A quick noodle snack on a tray.",
+  "object.FireworksLicense.name": "Fireworks Manufacturing License",
+  "object.FireworksLicense.description": "Permits the bearer to carry out the responsible manufacture of fireworks.",
   "big-craftable.Chemizer.name": "Chemizer",
   "big-craftable.Chemizer.description": "Breaks down various minerals and metals into salts.",
   "crafting.FireworksFestivalRedFirework.name": "Red Firework",

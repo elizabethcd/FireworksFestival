@@ -77,6 +77,17 @@
     "UniversalGiftTaste": -20,
     "ContextTags": [ "ingredient_firework", "color_white" ]
   },
+  {
+    "$ItemType": "Object",
+    "ID": "FireworksLicense",
+    "Texture": "Objects.png:8",
+    "Category": "Crafting",
+    "SellPrice": null,
+    "CanTrash": false,
+    "HideFromShippingCollection": true,
+    "ForcePriceOnAllInstances": true,
+    "IsGiftable": false
+  },
 
   // Salts
   {
@@ -238,7 +249,7 @@
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalRedFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "DGAItem",
@@ -264,20 +275,20 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/RedFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalOrangeFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "VanillaObject",
@@ -303,20 +314,20 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/OrangeFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalYellowFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "DGAItem",
@@ -342,20 +353,20 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/YellowFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalGreenFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "DGAItem",
@@ -381,20 +392,20 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/GreenFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalBlueFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "DGAItem",
@@ -420,20 +431,20 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/BlueFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalPurpleFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "DGAItem",
@@ -459,20 +470,20 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/PurpleFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
     "ID": "FireworksFestivalWhiteFirework",
-    "KnownByDefault": true,
+    "KnownByDefault": false,
     "Ingredients": [
       {
         "Type": "DGAItem",
@@ -498,15 +509,15 @@
     "Result": {
       "Type": "DGAItem",
       "Value": "violetlizabet.FireworksFestival/WhiteFirework"
-    }
-    //"DynamicFields": [
-    //  {
-    //    "KnownByDefault": true,
-    //    "Conditions": {
-    //      "HasFlag": "vlfireworksmail",
-    //    }
-    //  }
-    //]
+    },
+    "DynamicFields": [
+      {
+        "KnownByDefault": true,
+        "Conditions": {
+          "HasFlag": "vl.fireworkslicense"
+        }
+      }
+    ]
   },
   {
     "$ItemType": "CraftingRecipe",
@@ -1102,14 +1113,14 @@
     }
   },
 
-  // Shop entries
+   //Shop entries
   {
     "$ItemType": "ShopEntry",
-    "ShopId": "STF.violetlizabet.FireworkShop",
+    "ShopId": "Blacksmith",
     "Item": {
-      "Type": "DGARecipe",
-      "Value": "violetlizabet.FireworksFestival/FireworksFestivalPurpleFirework"
+      "Type": "DGAItem",
+      "Value": "violetlizabet.FireworksFestival/Niter"
     },
-    "Cost": 10000
+    "Cost": 100
   }
 ]
