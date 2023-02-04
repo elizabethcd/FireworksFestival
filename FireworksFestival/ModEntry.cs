@@ -11,6 +11,7 @@ using StardewValley.Menus;
 using StardewValley.Minigames;
 using HarmonyLib;
 using Microsoft.Xna.Framework.Graphics;
+using System.Globalization;
 
 namespace FireworksFestival
 {
@@ -38,11 +39,22 @@ namespace FireworksFestival
         private static Dictionary<ISalable, int[]> purpleBoatStock;
         private static Dictionary<ISalable, int[]> brownBoatStock;
 
-        // Explosions state of being
-        private static bool isExploding;
+        // Useful strings
+        private static string contentPackModID = "violetlizabet.DGA.FireworksFestival";
+        private static string fireworkTexLoc = "Mods/FireworksFestival/Fireworks";
+        private static string fireworkTexLocInGame = "Mods\\FireworksFestival\\Fireworks";
+        private static string isExplodingString = "violetlizabet.FireworksFestival/isExploding";
+        private static string explodeColorString = "violetlizabet.FireworksFestival/explodeColor";
+        private static string thisModID;
 
-        // Explosions state of color
-        private static Color explodeColor = Color.White;
+        // Firework names
+        private static string redFWName = contentPackModID  + "/RedFirework";
+        private static string orangeFWName = contentPackModID + "/OrangeFirework";
+        private static string yellowFWName = contentPackModID + "/YellowFirework";
+        private static string greenFWName = contentPackModID + "/GreenFirework";
+        private static string blueFWName = contentPackModID + "/BlueFirework";
+        private static string purpleFWName = contentPackModID + "/PurpleFirework";
+        private static string whiteFWName = contentPackModID + "/WhiteFirework";
 
         // List of fireworks
         private static Dictionary<String,Dictionary<Vector2,Color>> fireworkLocs = new Dictionary<String, Dictionary<Vector2, Color>>();
@@ -57,6 +69,8 @@ namespace FireworksFestival
             helper.Events.GameLoop.SaveLoaded += this.OnSaveLoaded;
             helper.Events.GameLoop.DayStarted += this.OnDayStarted;
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
+            helper.Events.Content.AssetRequested += this.OnAssetRequested;
+            helper.Events.Multiplayer.ModMessageReceived += this.OnModMessageReceived;
 
             var harmony = new Harmony(this.ModManifest.UniqueID);
 
@@ -104,6 +118,7 @@ namespace FireworksFestival
 
             monitorStatic = Monitor;
             helperStatic = helper;
+            thisModID = this.ModManifest.UniqueID;
         }
 
         /*********
@@ -146,12 +161,16 @@ namespace FireworksFestival
             {
                 return;
             }
-            Monitor.Log($"{Game1.CurrentEvent.FestivalName}", LogLevel.Trace);
             if (!Game1.CurrentEvent.isSpecificFestival("summer20"))
             {
                 //Monitor.Log("Not my ants!", LogLevel.Debug);
                 return;
             }
+            if (Game1.activeClickableMenu != null)
+            {
+                return;
+            }
+
             if (e.Button.IsActionButton())
             {
                 // Submarine warp
@@ -212,38 +231,63 @@ namespace FireworksFestival
             }            
         }
 
+        // Load the TAS textures
+        private void OnAssetRequested(object sender, AssetRequestedEventArgs e)
+        {
+            if (e.NameWithoutLocale.IsEquivalentTo(fireworkTexLoc))
+            {
+                Monitor.Log("Loading fireworks texture",LogLevel.Trace);
+                e.LoadFromModFile<Texture2D>("assets/Fireworks.png", AssetLoadPriority.Medium);
+            }
+        }
+
+        // Remove the TAS location
+        private void OnModMessageReceived(object sender, ModMessageReceivedEventArgs e)
+        {
+            if (e.FromModID == thisModID && e.Type == "fireworkRemovalMessage")
+            {
+                (string, Vector2) message = e.ReadAs<(string,Vector2)>();
+                if (fireworkLocs.TryGetValue(message.Item1, out Dictionary<Vector2, Color> localDict))
+                {
+                    localDict.Remove(message.Item2);
+                }
+            }
+
+        }
+
         // Trigger explosion properly when placed
         private static bool PlacementAction_Prefix(StardewValley.Object __instance, GameLocation location, int x, int y, Farmer who, ref bool __result)
         {
             // Not our item, we don't care
-            if (DGA_API.GetDGAItemId(__instance) == null || !__instance.Name.Contains("Firework", StringComparison.OrdinalIgnoreCase))
+            string itemID = DGA_API.GetDGAItemId(__instance);
+            if (itemID == null || !(itemID.Contains(contentPackModID, StringComparison.OrdinalIgnoreCase) && itemID.Contains("Firework", StringComparison.OrdinalIgnoreCase)))
             {
                 return true;
             }
             else
             {
                 Color color = Color.White;
-                if (__instance.Name.Contains("RedFirework", StringComparison.OrdinalIgnoreCase))
+                if (itemID.Equals(redFWName, StringComparison.OrdinalIgnoreCase))
                 {
                     color = Color.Red;
                 }
-                else if(__instance.Name.Contains("OrangeFirework", StringComparison.OrdinalIgnoreCase))
+                else if(itemID.Equals(orangeFWName, StringComparison.OrdinalIgnoreCase))
                 {
                     color = Color.Orange;
                 }
-                else if (__instance.Name.Contains("YellowFirework", StringComparison.OrdinalIgnoreCase))
+                else if (itemID.Equals(yellowFWName, StringComparison.OrdinalIgnoreCase))
                 {
                     color = Color.Yellow;
                 }
-                else if (__instance.Name.Contains("GreenFirework", StringComparison.OrdinalIgnoreCase))
+                else if (itemID.Equals(greenFWName, StringComparison.OrdinalIgnoreCase))
                 {
                     color = Color.Green;
                 }
-                else if (__instance.Name.Contains("BlueFirework", StringComparison.OrdinalIgnoreCase))
+                else if (itemID.Equals(blueFWName, StringComparison.OrdinalIgnoreCase))
                 {
                     color = Color.Blue;
                 }
-                else if (__instance.Name.Contains("PurpleFirework", StringComparison.OrdinalIgnoreCase))
+                else if (itemID.Equals(purpleFWName, StringComparison.OrdinalIgnoreCase))
                 {
                     color = Color.Purple;
                 }
@@ -275,7 +319,7 @@ namespace FireworksFestival
                         {
                             Game1.player.freezePause = 1000;
                             Game1.soundBank.PlayCue("snowyStep");
-                            Game1.player.addItemByMenuIfNecessaryElseHoldUp((Item)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/ShavedIce"));
+                            Game1.player.addItemByMenuIfNecessaryElseHoldUp((Item)DGA_API.SpawnDGAItem(contentPackModID + "/ShavedIce"));
                             Game1.player.modData["violetlizabet.FireworksFestival"] = "true";
                             hasReceivedFreeGift = true;
                         } 
@@ -303,6 +347,179 @@ namespace FireworksFestival
                 Game1.player.Position = new Vector2(5f, 36f) * 64f;
                 //monitor.Log($"Player is in {Game1.currentLocation.Name}");
             }
+        }
+
+        
+
+        // Generate explosion animation when placed
+        private static bool DoFireworkExplosionAnimation(GameLocation location, int x, int y, Farmer who, Color color)
+        {
+            Vector2 placementTile = new Vector2(x / 64, y / 64);
+            foreach (TemporaryAnimatedSprite temporarySprite2 in location.temporarySprites)
+            {
+                if (temporarySprite2.position.Equals(placementTile * 64f))
+                {
+                    return false;
+                }
+            }
+            location.playSound("thudStep");
+
+
+            // TAS ID
+            int idNum = Game1.random.Next();
+
+            // White firework is default
+            Rectangle fireworkRect = getFireworksRect(color);
+            //string fireworkName = getFireworksTexture(color);
+
+            monitorStatic.Log($"Creating TAS with source rect {fireworkRect}",LogLevel.Trace);
+
+            TemporaryAnimatedSprite fireworkTAS = new TemporaryAnimatedSprite(0, 100f, 1, 24, placementTile * 64f, flicker: true, flipped: false, location, who)
+            {
+                bombRadius = 3,
+                bombDamage = 1,
+                shakeIntensity = 0.5f,
+                shakeIntensityChange = 0.002f,
+                extraInfoForEndBehavior = idNum,
+                endFunction = location.removeTemporarySpritesWithID,
+                sourceRect = fireworkRect,
+                sourceRectStartingPos = new Vector2(fireworkRect.X,fireworkRect.Y),
+                scale = 4f
+            };
+
+            // Try forcing the texture name
+            helperStatic.Reflection.GetField<string>(fireworkTAS, "textureName").SetValue(fireworkTexLocInGame);
+            helperStatic.Reflection.GetMethod(fireworkTAS, "loadTexture").Invoke();
+
+            // Log the firework for later
+            monitorStatic.Log("Saving fireworks location to dictionary",LogLevel.Trace);
+            if (!fireworkLocs.ContainsKey(location.Name))
+            {
+                fireworkLocs.Add(location.Name, new Dictionary<Vector2, Color>());
+                fireworkLocs[location.Name].Add(placementTile, color);
+            }
+            else
+            {
+                fireworkLocs[location.Name].Add(placementTile, color);
+            }
+
+            // Send out the TAS
+            multiplayer.broadcastSprites(location, fireworkTAS);
+            location.netAudio.StartPlaying("fuse");
+            return true;
+        }
+
+        private static void explode_Prefix(GameLocation __instance, Vector2 tileLocation)
+        {
+            __instance.modData[isExplodingString] = "true";
+            monitorStatic.Log("Prefix on GameLocation.Explode hit", LogLevel.Trace);
+            if (fireworkLocs.TryGetValue(__instance.Name, out Dictionary<Vector2, Color> localDict))
+            {
+                if (localDict.TryGetValue(tileLocation, out Color thisCol))
+                {
+                    __instance.modData[explodeColorString] = thisCol.PackedValue.ToString("X", CultureInfo.InvariantCulture); ;
+                    monitorStatic.Log($"Setting explosion color to {thisCol}", LogLevel.Trace);
+                }
+            }
+        }
+
+        private static void broadcastSprites_Prefix(GameLocation location, List<TemporaryAnimatedSprite> sprites)
+        {
+            // Make the bomb color the right color
+            if (location.modData.ContainsKey(isExplodingString) && location.modData[isExplodingString].Equals("true", StringComparison.OrdinalIgnoreCase) && location.modData.ContainsKey(explodeColorString))
+            {
+                bool parsedColor = uint.TryParse(location.modData[explodeColorString], NumberStyles.HexNumber, CultureInfo.InvariantCulture, out uint result);
+                if (parsedColor)
+                {
+                    Color explodeColor = new Color(result);
+                    monitorStatic.Log($"Changing sprites to {explodeColor}", LogLevel.Trace);
+                    foreach (TemporaryAnimatedSprite spr in sprites)
+                    {
+                        spr.color = explodeColor;
+                    }
+                }
+                else
+                {
+                    monitorStatic.Log("Failed to parse color from moddata, color conversion issue", LogLevel.Warn);
+                }
+             }
+        }
+
+        private static void explode_Postfix(GameLocation __instance, Vector2 tileLocation)
+        {
+            __instance.modData[isExplodingString] = "false";
+            __instance.modData.Remove(explodeColorString);
+            monitorStatic.Log("Postfix on GameLocation.Explode hit",LogLevel.Trace);
+            if (fireworkLocs.TryGetValue(__instance.Name, out Dictionary<Vector2, Color> localDict))
+            {
+                monitorStatic.Log("Removing firework location from dictionary", LogLevel.Trace);
+                localDict.Remove(tileLocation);
+                helperStatic.Multiplayer.SendMessage((__instance.Name,tileLocation),"fireworkRemovalMessage", modIDs: new[] { thisModID });
+            }
+        }
+
+        private static string getFireworksTexture(Color color)
+        {
+            if (color.Equals(Color.Red))
+            {
+                monitorStatic.Log("Setting source to red firework", LogLevel.Trace);
+                return "RedFirework.png";
+            }
+            else if (color.Equals(Color.Orange))
+            {
+                monitorStatic.Log("Setting source to orange firework", LogLevel.Trace);
+                return "OrangeFirework.png";
+            }
+            else if (color.Equals(Color.Yellow))
+            {
+                monitorStatic.Log("Setting source to yellow firework", LogLevel.Trace);
+                return "YellowFirework.png";
+            }
+            else if (color.Equals(Color.Green))
+            {
+                monitorStatic.Log("Setting source to green firework", LogLevel.Trace);
+                return "GreenFirework.png";
+            }
+            else if (color.Equals(Color.Blue))
+            {
+                monitorStatic.Log("Setting source to blue firework", LogLevel.Trace);
+                return "BlueFirework.png";
+            }
+            else if (color.Equals(Color.Purple))
+            {
+                monitorStatic.Log("Setting source to purple firework", LogLevel.Trace);
+                return "PurpleFirework.png";
+            }
+            return "WhiteFirework.png";
+        }
+
+        private static Rectangle getFireworksRect(Color color)
+        {
+            if (color.Equals(Color.Red))
+            {
+                return new Rectangle(0, 0, 16, 16);
+            }
+            else if (color.Equals(Color.Orange))
+            {
+                return new Rectangle(16, 0, 16, 16);
+            }
+            else if (color.Equals(Color.Yellow))
+            {
+                return new Rectangle(32, 0, 16, 16);
+            }
+            else if (color.Equals(Color.Green))
+            {
+                return new Rectangle(48, 0, 16, 16);
+            }
+            else if (color.Equals(Color.Blue))
+            {
+                return new Rectangle(64, 0, 16, 16);
+            }
+            else if (color.Equals(Color.Purple))
+            {
+                return new Rectangle(80, 0, 16, 16);
+            }
+            return new Rectangle(96, 0, 16, 16);
         }
 
         public static bool postFireworkBuy(ISalable item, Farmer farmer, int amount)
@@ -336,8 +553,8 @@ namespace FireworksFestival
         private Dictionary<ISalable, int[]> getBlueBoatStock()
         {
             Dictionary<ISalable, int[]> stock = new Dictionary<ISalable, int[]>();
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/Takoyaki"), new int[2] { 500, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/Yakisoba"), new int[2] { 500, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(contentPackModID + "/Takoyaki"), new int[2] { 500, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(contentPackModID + "/Yakisoba"), new int[2] { 500, int.MaxValue });
             stock.Add(new StardewValley.Object(202, 1), new int[2] { 1500, 1 });
             stock.Add(new StardewValley.Object(214, 1), new int[2] { 1500, 1 });
             stock.Add(new StardewValley.Object(205, 1), new int[2] { 1500, 1 });
@@ -347,14 +564,14 @@ namespace FireworksFestival
         private Dictionary<ISalable, int[]> getPurpleBoatStock()
         {
             Dictionary<ISalable, int[]> stock = new Dictionary<ISalable, int[]>();
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/RedFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/OrangeFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/YellowFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/GreenFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/BlueFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/PurpleFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/WhiteFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/FireworksLicense"), new int[2] { 50000, 1 });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(redFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(orangeFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(yellowFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(greenFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(blueFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(purpleFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(whiteFWName), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem(contentPackModID + "/FireworksLicense"), new int[2] { 50000, 1 });
             return stock;
         }
 
@@ -367,118 +584,6 @@ namespace FireworksFestival
             stock.Add(new StardewValley.Object(636, 1), new int[2] { 5000, 1 });
             stock.Add(new StardewValley.Object(268, 1), new int[2] { 5000, 1 });
             return stock;
-        }
-
-        // Generate explosion animation when placed
-        private static bool DoFireworkExplosionAnimation(GameLocation location, int x, int y, Farmer who, Color color)
-        {
-            Vector2 placementTile = new Vector2(x / 64, y / 64);
-            foreach (TemporaryAnimatedSprite temporarySprite2 in location.temporarySprites)
-            {
-                if (temporarySprite2.position.Equals(placementTile * 64f))
-                {
-                    return false;
-                }
-            }
-            int idNum = Game1.random.Next();
-            location.playSound("thudStep");
-            TemporaryAnimatedSprite pearlTAS = new TemporaryAnimatedSprite(1720, 100f, 1, 24, placementTile * 64f, flicker: true, flipped: false, location, who)
-            {
-                bombRadius = 3,
-                bombDamage = 1,
-                shakeIntensity = 0.5f,
-                shakeIntensityChange = 0.002f,
-                extraInfoForEndBehavior = idNum,
-                endFunction = location.removeTemporarySpritesWithID
-            };
-            // White firework is default
-            Rectangle fireworkRect = new Rectangle(0,0,16,16);
-            String fireworkName = "WhiteFirework.png";
-            if (color.Equals(Color.Red))
-            {
-                monitorStatic.Log("Setting source to red firework", LogLevel.Trace);
-                fireworkName = "RedFirework.png";
-            }
-            else if (color.Equals(Color.Orange))
-            {
-                monitorStatic.Log("Setting source to orange firework", LogLevel.Trace);
-                fireworkName = "OrangeFirework.png";
-            }
-            else if (color.Equals(Color.Yellow))
-            {
-                monitorStatic.Log("Setting source to yellow firework", LogLevel.Trace);
-                fireworkName = "YellowFirework.png";
-            }
-            else if (color.Equals(Color.Green))
-            {
-                monitorStatic.Log("Setting source to green firework", LogLevel.Trace);
-                fireworkName = "GreenFirework.png";
-            }
-            else if (color.Equals(Color.Blue))
-            {
-                monitorStatic.Log("Setting source to blue firework", LogLevel.Trace);
-                fireworkName = "BlueFirework.png";
-            }
-            else if (color.Equals(Color.Purple))
-            {
-                monitorStatic.Log("Setting source to purple firework", LogLevel.Trace);
-                fireworkName = "PurpleFirework.png";
-            }
-            pearlTAS.texture = helperStatic.ModContent.Load<Texture2D>("assets/fireworks/" + fireworkName);
-            pearlTAS.sourceRect = fireworkRect;
-            pearlTAS.scale = 4f;
-            multiplayer.broadcastSprites(location, pearlTAS);
-            location.netAudio.StartPlaying("fuse");
-
-            // Log the firework for later
-            if (!fireworkLocs.ContainsKey(location.Name))
-            {
-                fireworkLocs.Add(location.Name, new Dictionary<Vector2, Color>());
-                fireworkLocs[location.Name].Add(placementTile, color);
-            }
-            else
-            {
-                fireworkLocs[location.Name].Add(placementTile, color);
-            }
-            return true;
-        }
-
-        private static void broadcastSprites_Prefix(GameLocation location, List<TemporaryAnimatedSprite> sprites)
-        {
-            if (isExploding)
-            {
-                monitorStatic.Log($"Changing sprites to {explodeColor}", LogLevel.Trace);
-                foreach (TemporaryAnimatedSprite spr in sprites)
-                {
-                    spr.color = explodeColor;
-                }
-            }
-        }
-
-        private static void explode_Prefix(GameLocation __instance, Vector2 tileLocation)
-        {
-            isExploding = true;
-            monitorStatic.Log("Prefix on GameLocation.Explode hit", LogLevel.Trace);
-            if (fireworkLocs.TryGetValue(__instance.Name, out Dictionary<Vector2,Color> localDict))
-            {
-                if (localDict.TryGetValue(tileLocation, out Color thisCol ))
-                {
-                    explodeColor = thisCol;
-                    monitorStatic.Log($"Setting explosion color to {explodeColor}", LogLevel.Trace);
-                }
-            }
-        }
-
-        private static void explode_Postfix(GameLocation __instance, Vector2 tileLocation)
-        {
-            isExploding = false;
-            monitorStatic.Log("Postfix on GameLocation.Explode hit",LogLevel.Trace);
-            if (fireworkLocs.TryGetValue(__instance.Name, out Dictionary<Vector2, Color> localDict))
-            {
-                monitorStatic.Log("Removing firework location from dictionary", LogLevel.Trace);
-                localDict.Remove(tileLocation);
-            }
-            explodeColor = Color.White;
         }
     }
 }
