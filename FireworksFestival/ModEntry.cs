@@ -336,8 +336,8 @@ namespace FireworksFestival
         private Dictionary<ISalable, int[]> getBlueBoatStock()
         {
             Dictionary<ISalable, int[]> stock = new Dictionary<ISalable, int[]>();
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/Takoyaki"), new int[2] { 500, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/Yakisoba"), new int[2] { 500, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/Takoyaki"), new int[2] { 500, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/Yakisoba"), new int[2] { 500, int.MaxValue });
             stock.Add(new StardewValley.Object(202, 1), new int[2] { 1500, 1 });
             stock.Add(new StardewValley.Object(214, 1), new int[2] { 1500, 1 });
             stock.Add(new StardewValley.Object(205, 1), new int[2] { 1500, 1 });
@@ -347,14 +347,14 @@ namespace FireworksFestival
         private Dictionary<ISalable, int[]> getPurpleBoatStock()
         {
             Dictionary<ISalable, int[]> stock = new Dictionary<ISalable, int[]>();
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/RedFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/OrangeFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/YellowFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/GreenFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/BlueFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/PurpleFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/WhiteFirework"), new int[2] { 5000, int.MaxValue });
-            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.FireworksFestival/FireworksLicense"), new int[2] { 50000, 1 });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/RedFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/OrangeFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/YellowFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/GreenFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/BlueFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/PurpleFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/WhiteFirework"), new int[2] { 5000, int.MaxValue });
+            stock.Add((ISalable)DGA_API.SpawnDGAItem("violetlizabet.DGA.FireworksFestival/FireworksLicense"), new int[2] { 50000, 1 });
             return stock;
         }
 
