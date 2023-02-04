@@ -121,7 +121,6 @@ namespace FireworksFestival
                 return;
             }
 
-            DGA_API.AddEmbeddedPack(this.ModManifest, Path.Combine(Helper.DirectoryPath, "assets", "dga"));
         }
 
         private void OnDayStarted(object sender, DayStartedEventArgs e)
