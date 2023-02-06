@@ -48,7 +48,8 @@ namespace FireworksFestival
         private static string fishingGameString = "violetlizabet.FireworksFestival/fishingGame";
         private static string thisModID;
         private static string licenseLetter = "vl.FireworksFestival";
-        private static string msgType = "fireworkRemovalMessage";
+        private static string msgTypeRemove = "fireworkRemovalMessage";
+        private static string msgTypeAdd = "fireworkAddMessage";
 
         // Firework names
         private static string redFWName = contentPackModID  + "/RedFirework";
@@ -83,6 +84,7 @@ namespace FireworksFestival
             helper.Events.Input.ButtonPressed += this.OnButtonPressed;
             helper.Events.Content.AssetRequested += this.OnAssetRequested;
             helper.Events.Multiplayer.ModMessageReceived += this.OnModMessageReceived;
+            helper.Events.Multiplayer.PeerConnected += this.OnPeerConnected;
 
             var harmony = new Harmony(this.ModManifest.UniqueID);
 
@@ -280,15 +282,49 @@ namespace FireworksFestival
         // Remove the TAS location
         private void OnModMessageReceived(object sender, ModMessageReceivedEventArgs e)
         {
-            if (e.FromModID == thisModID && e.Type == msgType)
+            if (e.FromModID == thisModID)
             {
-                (string, Vector2) message = e.ReadAs<(string,Vector2)>();
-                if (fireworkLocs.TryGetValue(message.Item1, out Dictionary<Vector2, Color> localDict))
+                if (e.Type == msgTypeRemove)
                 {
-                    localDict.Remove(message.Item2);
+                    (string, Vector2) message = e.ReadAs<(string, Vector2)>();
+                    if (fireworkLocs.TryGetValue(message.Item1, out Dictionary<Vector2, Color> localDict))
+                    {
+                        monitorStatic.Log("Removing firework from local dictionary", LogLevel.Trace);
+                        localDict.Remove(message.Item2);
+                    }
+                }
+                else if (e.Type == msgTypeAdd)
+                {
+                    if (Game1.player.IsMainPlayer)
+                    {
+                        monitorStatic.Log("Adding farmhand firework to local dictionary", LogLevel.Trace);
+                        (string, Vector2, Color) message = e.ReadAs<(string, Vector2, Color)>();
+                        if (!fireworkLocs.ContainsKey(message.Item1))
+                        {
+                            fireworkLocs.Add(message.Item1, new Dictionary<Vector2, Color>());
+                            fireworkLocs[message.Item1].Add(message.Item2, message.Item3);
+                        }
+                        else
+                        {
+                            fireworkLocs[message.Item1].Add(message.Item2, message.Item3);
+                        }
+                    }
                 }
             }
 
+        }
+
+        // Check for farmhand versions and warn about mismatches
+        private void OnPeerConnected(object sender, PeerConnectedEventArgs e)
+        {
+            if (e.Peer.GetMod(thisModID) == null)
+            {
+                Monitor.Log("Player connected without this mod installed, problems likely to result!", LogLevel.Error);
+            }
+            else if (e.Peer.GetMod(thisModID).Version.IsOlderThan(this.ModManifest.Version))
+            {
+                Monitor.Log("Player connected with an older version of this mod installed, problems likely to result!", LogLevel.Error);
+            }
         }
 
         // Trigger explosion properly when placed
@@ -411,28 +447,28 @@ namespace FireworksFestival
         }
 
         // Give 1 carp per 100 star tokens
-        private static void FishingGame_Tick_Postfix(FishingGame __instance, int ___showResultsTimer)
+        private static void FishingGame_Tick_Postfix(FishingGame __instance)
         {
             if (isSummer && Game1.dayOfMonth == 20)
             {
                 if (__instance.starTokensWon > 0 && !(Game1.player.modData.TryGetValue(fishingGameString, out string done) && done.Equals("true", StringComparison.OrdinalIgnoreCase)))
                 {
-                    monitorStatic.Log($"Currently won {__instance.starTokensWon}", LogLevel.Alert);
+                    monitorStatic.Log($"Currently won {__instance.starTokensWon}", LogLevel.Trace);
                     __instance.starTokensWon = __instance.starTokensWon / 100;
                     Game1.player.festivalScore = __instance.starTokensWon;
                     Game1.player.modData[fishingGameString] = "true";
-                    monitorStatic.Log($"Now won {__instance.starTokensWon}", LogLevel.Alert);
+                    monitorStatic.Log($"Now won {__instance.starTokensWon}", LogLevel.Trace);
                 }                
             }
         }
 
         // Give the carp out
-        private static void FishingGame_Unload_Postfix(FishingGame __instance, int ___showResultsTimer)
+        private static void FishingGame_Unload_Postfix(FishingGame __instance)
         {
             if (isSummer && Game1.dayOfMonth == 20 && __instance.starTokensWon > 0)
             {
                 int numCarp = __instance.starTokensWon;
-                monitorStatic.Log($"Rewarding with {numCarp} Carp", LogLevel.Alert);
+                monitorStatic.Log($"Rewarding with {numCarp} Carp", LogLevel.Trace);
                 StardewValley.Object carp = new StardewValley.Object(carpIndex, numCarp);
                 Game1.player.addItemToInventory(carp);
                 Game1.player.festivalScore = 0;
@@ -492,6 +528,12 @@ namespace FireworksFestival
                 fireworkLocs[location.Name].Add(placementTile, color);
             }
 
+            // If player is a farmhand, transmit firework location to host
+            if (!Game1.player.IsMainPlayer)
+            {
+                helperStatic.Multiplayer.SendMessage((location.Name, placementTile, color), msgTypeAdd, modIDs: new[] { thisModID });
+            }
+
             // Send out the TAS
             multiplayer.broadcastSprites(location, fireworkTAS);
             location.netAudio.StartPlaying("fuse");
@@ -543,7 +585,7 @@ namespace FireworksFestival
             {
                 monitorStatic.Log("Removing firework location from dictionary", LogLevel.Trace);
                 localDict.Remove(tileLocation);
-                helperStatic.Multiplayer.SendMessage((__instance.Name,tileLocation), msgType, modIDs: new[] { thisModID });
+                helperStatic.Multiplayer.SendMessage((__instance.Name,tileLocation), msgTypeRemove, modIDs: new[] { thisModID });
             }
         }
 
@@ -601,6 +643,14 @@ namespace FireworksFestival
             stock.Add(new StardewValley.Objects.Clothing(10), new int[4] { 0, 1, carpIndex, 2 });
             stock.Add(new StardewValley.Objects.Clothing(11), new int[4] { 0, 1, carpIndex, 2 });
             stock.Add(new StardewValley.Objects.Clothing(12), new int[4] { 0, 1, carpIndex, 2 });
+            stock.Add(new StardewValley.Objects.Hat(44), new int[4] { 0, 1, carpIndex, 3 });
+            stock.Add(new StardewValley.Objects.Hat(67), new int[4] { 0, 1, carpIndex, 3 });
+            stock.Add(new StardewValley.Objects.Hat(42), new int[4] { 0, 1, carpIndex, 3 });
+            stock.Add(new StardewValley.Objects.Hat(36), new int[4] { 0, 1, carpIndex, 3 });
+            if (Game1.player.achievements.Contains(34))
+            {
+                stock.Add(new StardewValley.Objects.Hat(9), new int[4] { 0, 1, carpIndex, 3 });
+            }
             return stock;
         }
 
