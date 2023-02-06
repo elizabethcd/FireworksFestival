@@ -231,7 +231,7 @@
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
-                "ALecto": "{{i18n:Alecto1}}$1#$b#{{i18n:Alecto2}}$4",
+                "Alecto": "{{i18n:Alecto1}}$1#$b#{{i18n:Alecto2}}$4",
                 "KevinTheCrow": "{{i18n:KevinTheCrow}}",
                 "TitaniaTheCrow": "{{i18n:TitaniaTheCrow}}"
             },

@@ -42,7 +42,9 @@ namespace FireworksFestival
         // Useful strings
         private static string contentPackModID = "violetlizabet.DGA.FireworksFestival";
         private static string fireworkTexLoc = "Mods/FireworksFestival/Fireworks";
+        private static string burstTexLoc = "Mods/FireworksFestival/FireworkBurst";
         private static string fireworkTexLocInGame = "Mods\\FireworksFestival\\Fireworks";
+        private static string burstTexLocInGame = "Mods\\FireworksFestival\\FireworkBurst";
         private static string isExplodingString = "violetlizabet.FireworksFestival/isExploding";
         private static string explodeColorString = "violetlizabet.FireworksFestival/explodeColor";
         private static string fishingGameString = "violetlizabet.FireworksFestival/fishingGame";
@@ -126,6 +128,12 @@ namespace FireworksFestival
             harmony.Patch(
                 original: AccessTools.Method(typeof(FishingGame), nameof(FishingGame.unload)),
                 prefix: new HarmonyMethod(typeof(ModEntry), nameof(ModEntry.FishingGame_Unload_Postfix))
+            );
+
+            // Add specific temporary sprite
+            harmony.Patch(
+                original: AccessTools.Method(typeof(Event), "addSpecificTemporarySprite"),
+                postfix: new HarmonyMethod(typeof(ModEntry), nameof(ModEntry.specificTemporarySprite_Postfix))
             );
 
             // Cause explosion when fireworks placed
@@ -277,6 +285,11 @@ namespace FireworksFestival
                 Monitor.Log("Loading fireworks texture",LogLevel.Trace);
                 e.LoadFromModFile<Texture2D>("assets/Fireworks.png", AssetLoadPriority.Medium);
             }
+            if (e.NameWithoutLocale.IsEquivalentTo(burstTexLoc))
+            {
+                Monitor.Log("Loading firework burst texture", LogLevel.Trace);
+                e.LoadFromModFile<Texture2D>("assets/FireworkBurst.png", AssetLoadPriority.Medium);
+            }
         }
 
         // Remove the TAS location
@@ -399,6 +412,82 @@ namespace FireworksFestival
                     case 1:
                         Game1.drawObjectDialogue(Game1.content.LoadString("Strings\\Locations:BeachNightMarket_GiftGiverEnjoy"));
                         break;
+                }
+            }
+        }
+
+        private static void specificTemporarySprite_Postfix(string key, GameLocation location, string[] split)
+        {
+            if (key.Equals("vlFireworkBurst", StringComparison.OrdinalIgnoreCase))
+            {
+                monitorStatic.Log("Playing firework burst",LogLevel.Debug);
+                // Make sure there's enough arguments
+                if (split.Length < 4)
+                {
+                    monitorStatic.Log("Not enough arguments to specificTAS vlFireworkBurst",LogLevel.Warn);
+                    return;
+                }
+                // Check that location is correct
+                if (int.TryParse(split[2], out int xLoc) && int.TryParse(split[3], out int yLoc))
+                {
+                    int type = 0;
+                    // Check that sprite details are correct
+                    if (split.Length < 5 || !int.TryParse(split[4], out type))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set type arguments, setting to {type}", LogLevel.Warn);
+                    }
+                    if (type < 0 || type > 6)
+                    {
+                        type = 0;
+                        monitorStatic.Log($"specificTAS vlFireworkBurst set type to invalid number, resetting to {type}", LogLevel.Warn);
+                    }
+                    Rectangle sourceRect = new Rectangle(0, 48 * type, 64, 48);
+
+                    float animInterval = 100f;
+                    if (split.Length < 6 || !float.TryParse(split[5], out animInterval))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set animation interval, setting to {animInterval}", LogLevel.Warn);
+                    }
+
+                    int animLen = 8;
+                    if (split.Length < 7 || !int.TryParse(split[6], out animLen))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set animation length, setting to {animLen}", LogLevel.Warn);
+                    }
+
+                    int numLoops = 1;
+                    if (split.Length < 8 || !int.TryParse(split[7], out numLoops))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set animation length, setting to {numLoops}", LogLevel.Trace);
+                    }
+
+                    bool flicker = false;
+                    if (split.Length < 9 || !bool.TryParse(split[8], out flicker))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set flicker, setting to {flicker}", LogLevel.Trace);
+                    }
+
+                    bool flipped = false;
+                    if (split.Length < 10 || !bool.TryParse(split[9], out flipped))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set flip, setting to {flipped}", LogLevel.Trace);
+                    }
+
+                    float layerDepth = 99f;
+                    if (split.Length < 11 || !float.TryParse(split[10], out layerDepth))
+                    {
+                        monitorStatic.Log($"specificTAS vlFireworkBurst failed to set layer depth, setting to {layerDepth}", LogLevel.Trace);
+                    }
+
+                    TemporaryAnimatedSprite burst = new TemporaryAnimatedSprite(burstTexLocInGame, sourceRect, animInterval, animLen, numLoops, new Vector2(xLoc * 64, yLoc * 64), flicker, flipped);
+                    burst.layerDepth = layerDepth;
+                    burst.scale = 4f;
+                    location.TemporarySprites.Add(burst);
+                    
+                }
+                else
+                {
+                    monitorStatic.Log("specificTAS vlFireworkBurst failed in location arguments", LogLevel.Warn);
                 }
             }
         }
