@@ -1,0 +1,230 @@
+{
+    "Format": "1.28.0",
+    "Changes": [
+        // Load festival data
+        {
+            "Action": "Load",
+            "Target": "Data/Festivals/Summer20",
+            "FromFile": "assets/summer20.json",
+        },
+        // Edit festival dialogue in
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "Abigail": "{{i18n:Abigail}}$h",
+                "Robin": "{{i18n:Robin}}$h",
+                "Demetrius": "{{i18n:Demetrius}}",
+                "Maru": "{{i18n:Maru}}$2",
+                "Sebastian": "{{i18n:Sebastian}}$h",
+                "Pierre": "{{i18n:Pierre}}$2",
+                "Caroline": "{{i18n:Caroline}}",
+                "Linus": "{{i18n:Linus}}$h",
+                "Alex": "{{i18n:Alex}}",
+                "George": "{{i18n:George}}",
+                "Evelyn": "{{i18n:Evelyn}}",
+                "Lewis": "{{i18n:Lewis}}",
+                "Clint": "{{i18n:Clint}}",
+                "Emily": "{{i18n:Emily}}",
+                "Penny": "{{i18n:Penny}}",
+                "Pam": "{{i18n:Pam}}$2",
+                "Haley": "{{i18n:Haley}}$2",
+                "Jodi": "{{i18n:Jodi}}$h",
+                "Kent": "{{i18n:Kent1}}#$b#{{i18n:Kent2}}",
+                "Sam": "{{i18n:Sam}}$h",
+                "Leah": "{{i18n:Leah1}}#$e#{{i18n:Leah2}}$h",
+                "Shane": "{{i18n:Shane}}",
+                "Marnie": "{{i18n:Marnie}}",
+                "Elliott": "{{i18n:Elliott}}",
+                "Gus": "{{i18n:Gus}}$h",
+                "Dwarf": "{{i18n:Dwarf}}",
+                "Wizard": "{{i18n:Wizard1}}#$b#{{i18n:Wizard2}}",
+                "Harvey": "{{i18n:Harvey}}$s",
+                "Sandy": "{{i18n:Sandy}}$h",
+                "Jas": "{{i18n:Jas1}}#$e#{{i18n:Jas2}}",
+                "Vincent": "{{i18n:Vincent}}",
+                "Willy": "{{i18n:Willy1}}#$b#{{i18n:Willy2}}$h",
+                "Leo": "{{i18n:Leo}}"
+            }
+        },
+        // Add in NPC locations and dialogue
+        {
+            "Action": "Include",
+            "FromFile": "NPCcompat.json"
+        },
+        // Edit main event in for i18n
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "mainEvent": "pause 500/globalFade/viewport -1000 -1000/warp farmer1 28 36/warp spouse 29 36/positionOffset farmer 0 16/faceDirection spouse 2/warp farmer2 29 35/warp farmer3 34 36/warp farmer4 35 36/faceDirection farmer1 2/faceDirection farmer2 2/faceDirection farmer3 2/faceDirection farmer4 2/viewport 26 36 true/pause 2000/move Lewis 0 1 2/move Lewis -2 0 3/pause 400/showFrame Lewis 16 true/animate Lewis false false 200 25 16 17 17/pause 800/playSound parry/pause 500/showFrame Lewis 0 true/animate Lewis false false 200 25 12/pause 400/faceDirection Lewis 2/playMusic night_market/viewport move 1 0 10000/pause 10000/globalFade/viewport -1000 -1000/changeToTemporaryMap NightSceneFireworks7 false/loadActors Buildings/bgColor 0 0 0/ambientLight 0 0 0/viewport 14 23 true clamp/viewport move 0 -1 6000/pause 6000/playSound explosion/changeToTemporaryMap NightSceneFireworks1 false/temporarySprite 12 23 3 8 100 false -1/viewport move 0 -1 2000/pause 2000/playSound explosion/changeToTemporaryMap NightSceneFireworks2 false/viewport move 0 -1 2000/pause 2000/playSound explosion/changeToTemporaryMap NightSceneFireworks3 false/viewport move 0 1 2000/pause 2000/playSound explosion/changeToTemporaryMap NightSceneFireworks4 false/viewport move 0 1 2000/pause 2000/playSound explosion/changeToTemporaryMap NightSceneFireworks5 false/viewport move 0 1 2000/pause 2000/playSound explosion/changeToTemporaryMap NightSceneFireworks6 false/viewport move 0 -1 2000/pause 2000/changeToTemporaryMap NightSceneFireworks7 false/viewport move 0 -1 5000/pause 5000/message \"{{i18n:FireworksShowEnd}}\"/playMusic none/pause 2000/waitForOtherPlayers festivalEnd/end",
+            }
+        },
+        // Add festival to the list
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/FestivalDates",
+            "Entries": {
+                "summer20": "{{i18n:FestivalName}}"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "name": "{{i18n:FestivalName}}"
+            }
+        },
+        // Load festival map
+        {
+            "Action": "Load",
+            "Target": "Maps/Beach-FireworksFestival",
+            "FromFile": "assets/Maps/Beach-FireworksFestival.tmx",
+        },
+        // Load submarine map
+        {
+            "Action": "Load",
+            "Target": "Maps/FishingGame",
+            "FromFile": "assets/Maps/Submarine-FireworksFestival.tmx",
+            "When": {
+                "Season": "summer",
+                "Day": 20
+            }
+        },
+        // Load nighttime maps
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks1",
+            "FromFile": "assets/Maps/NightSceneFireworks1.tmx",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks2",
+            "FromFile": "assets/Maps/NightSceneFireworks2.tmx",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks3",
+            "FromFile": "assets/Maps/NightSceneFireworks3.tmx",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks4",
+            "FromFile": "assets/Maps/NightSceneFireworks4.tmx",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks5",
+            "FromFile": "assets/Maps/NightSceneFireworks5.tmx",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks6",
+            "FromFile": "assets/Maps/NightSceneFireworks6.tmx",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/NightSceneFireworks7",
+            "FromFile": "assets/Maps/NightSceneFireworks7.tmx",
+        },
+        // Load nighttime map sheets
+        {
+            "Action": "Load",
+            "Target": "Maps/nightSceneFireworksBG",
+            "FromFile": "assets/nightSceneFireworksBG.png",
+        },
+        {
+            "Action": "Load",
+            "Target": "Maps/FireworkBurst",
+            "FromFile": "assets/FireworkBurst.png",
+        },
+        // Load beach map sheets
+        {
+            "Action": "Load",
+            "Target": "Maps/FireworksFestivalNightMarket",
+            "FromFile": "assets/FireworksFestivalNightMarket.png",
+        },
+        {
+            "Action": "EditImage",
+            "Target": "Maps/Festivals",
+            "FromFile": "assets/Festivals-FireworksEdits.png",
+            "PatchMode": "Overlay",
+            "When": {
+                "Season": "summer",
+                "Day": 20
+            }
+        },
+        // Edit in map strings
+        {
+            "Action": "EditData",
+            "Target": "Strings/StringsFromMaps",
+            "Entries": {
+                "vl.FireworksSubCaptain": "{{i18n:Submarine}}",
+                "vl.FireworksShadowy": "{{i18n:ShadowyFigure}}",
+                "vl.FireworksMermaid": "{{i18n:Mermaids}}",
+            }
+        },
+        // Edit questions
+        {
+            "Action": "EditData",
+            "LogName": "Problem Line",
+            "Target": "Strings/StringsFromCSFiles",
+            "Entries": {
+                "Event.cs.1531": "$q -1 null#{{i18n:ShowStartQuestion}}#$r -1 0 yes#{{i18n:ShowStartYes}}#$r -1 0 no#{{i18n:ShowStartNo}}",
+            },
+            "When": {
+                "Season": "summer",
+                "Day": 20
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Strings/StringsFromCSFiles",
+            "Entries": {
+                "Event.cs.1681": "{{i18n:SubmarineQuestion}}",
+            },
+            "When": {
+                "Season": "summer",
+                "Day": 20
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Strings/Locations",
+            "Entries": {
+                "BeachNightMarket_GiftGiverQuestion": "{{i18n:MerchantQuestion}}",
+                "BeachNightMarket_GiftGiverEnjoy": "{{i18n:Merchant}}"
+            },
+            "When": {
+                "Season": "summer",
+                "Day": 20
+            }
+        },
+        // Add festival mail
+        {
+            "Action": "EditData",
+            "Target": "Data/mail", 
+            "Entries": {
+                "vl.FireworksFestival": "{{i18n:Letter1}}^{{i18n:Letter2}}^^{{i18n:Letter3}}^{{i18n:Letter4}}^   {{i18n:Letter5}}[#]{{i18n:LetterTitle}}",
+            }
+        },
+        // Change fishing game fishes
+        {
+            "Action": "EditData",
+            "Target": "Data/Locations",
+            "Fields": {
+                "fishingGame": {
+                    "5": "129 -1 130 -1 131 -1 146 -1 147 -1 148 -1 708 -1" // field 5 (summer fish)
+                }
+            },
+        },
+        // Change fishing game reward
+        {
+            "Action": "EditData",
+            "Target": "Strings/StringsFromCSFiles",
+            "Entries": {
+                "FishingGame.cs.12013": "{{i18n:FishingReward1}} {0} {{i18n:FishingReward2}}",
+            }
+        }
+    ]
+}

@@ -1,0 +1,243 @@
+{
+    "Changes": [
+        // Add Jean and Jorts to festival
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "JortsCat 11 33 left",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "tiakall.jortsandjean"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "JeanCat 13 34 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "tiakall.jortsandjean"
+            }
+        },
+        // Give Jean and Jorts dialogue
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "JortsCat": "{{i18n:JortsCat}}$2",
+                "JeanCat": "{{i18n:JeanCat}}"
+            },
+            "When": {
+                "HasMod": "tiakall.jortsandjean"
+            }
+        },
+        // Add Jasper to festival
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Jasper 32 20 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "Lemurkat.NPCJasper"
+            }
+        },
+        // Give Jasper dialogue
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "Jasper": "{{i18n:Jasper}}",
+            },
+            "When": {
+                "HasMod": "Lemurkat.NPCJasper"
+            }
+        },
+        // Add MisterGinger to festival
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "MisterGinger 24 33 left",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "LemurKat.Mr.Ginger.NPC"
+            }
+        },
+        // Give MisterGinger dialogue
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "MisterGinger": "{{i18n:MisterGinger1}}",
+            },
+            "When": {
+                "HasMod": "LemurKat.Mr.Ginger.NPC",
+                "HasSeenEvent |contains=50706121": false
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "MisterGinger": "{{i18n:MisterGinger2}}",
+            },
+            "When": {
+                "HasMod": "LemurKat.Mr.Ginger.NPC",
+                "HasSeenEvent |contains=50706121": true
+            }
+        },
+        // Add Jessie and Juliet to festival
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Jessie 56 11 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "LemurKat.JulietHouse.NPC"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Juliet 40 36 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "LemurKat.JulietHouse.NPC"
+            }
+        },
+        // Give Jessie and Juliet dialogue
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "Jessie": "{{i18n:Jessie}}$1",
+                "Juliet": "{{i18n:Juliet}}$1"
+            },
+            "When": {
+                "HasMod": "LemurKat.JulietHouse.NPC"
+            }
+        },
+        // Add Alecto, Kevin, and Titania to festival
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Alecto 67 2 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "ZoeDoll.NPCAlecto"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "KevinTheCrow 66 3 right",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "ZoeDoll.NPCAlecto"
+            }
+        },
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "TitaniaTheCrow 68 3 left",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "ZoeDoll.NPCAlecto"
+            }
+        },
+        // Give Alecto, Kevin, and Titania dialogue
+        // Give Jessie and Juliet dialogue
+        {
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "ALecto": "{{i18n:Alecto1}}$1#$b#{{i18n:Alecto2}}$4",
+                "KevinTheCrow": "{{i18n:KevinTheCrow}}",
+                "TitaniaTheCrow": "{{i18n:TitaniaTheCrow}}"
+            },
+            "When": {
+                "HasMod": "ZoeDoll.NPCAlecto"
+            }
+        },
+    ]
+}

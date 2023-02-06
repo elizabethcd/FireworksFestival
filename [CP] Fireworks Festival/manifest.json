@@ -1,0 +1,16 @@
+{
+  "Name": "[CP] Fireworks Festival",
+  "Author": "violetlizabet",
+  "Version": "0.1.0",
+  "Description": "Adds a fireworks festival.",
+  "UniqueID": "violetlizabet.CP.FireworksFestival",
+  "ContentPackFor": { 
+    "UniqueID": "Pathoschild.ContentPatcher" 
+  },
+  "UpdateKeys": [],
+  "Dependencies": [
+    {
+      "UniqueID": "violetlizabet.FireworksFestival",
+    },
+  ],
+}
