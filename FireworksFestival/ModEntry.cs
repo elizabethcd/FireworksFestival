@@ -209,7 +209,6 @@ namespace FireworksFestival
             }
             if (!Game1.CurrentEvent.isSpecificFestival("summer20"))
             {
-                //Monitor.Log("Not my ants!", LogLevel.Debug);
                 return;
             }
             if (Game1.activeClickableMenu != null)
@@ -261,7 +260,8 @@ namespace FireworksFestival
                 {
                     ShopMenu purpleShop = new ShopMenu(purpleBoatStock, 0, "Birdie", ModEntry.postFireworkBuy, null, "STF.violetlizabet.Fireworks");
                     purpleShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie"), new Vector2(0,0), 1, "Birdie");
-                    purpleShop.potraitPersonDialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Birdie");
+                    string dialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Birdie");
+                    purpleShop.potraitPersonDialogue = Game1.parseText(dialogue, Game1.dialogueFont, 304);
                     Game1.activeClickableMenu = purpleShop;
                 }
 
@@ -276,7 +276,8 @@ namespace FireworksFestival
                 {
                     ShopMenu clothesShop = new ShopMenu(clothingShopStock, 0, "FireworksFox", null, null, "STF.violetlizabet.FireworkClothing");
                     clothesShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie"), new Vector2(0, 0), 1, "FireworksFox");
-                    clothesShop.potraitPersonDialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Fox");
+                    string dialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Fox");
+                    clothesShop.potraitPersonDialogue = Game1.parseText(dialogue, Game1.dialogueFont, 304);
                     Game1.activeClickableMenu = clothesShop;
                 }
             }            
@@ -287,12 +288,10 @@ namespace FireworksFestival
         {
             if (e.NameWithoutLocale.IsEquivalentTo(fireworkTexLoc))
             {
-                Monitor.Log("Loading fireworks texture",LogLevel.Trace);
                 e.LoadFromModFile<Texture2D>("assets/Fireworks.png", AssetLoadPriority.Medium);
             }
             if (e.NameWithoutLocale.IsEquivalentTo(burstTexLoc))
             {
-                Monitor.Log("Loading firework burst texture", LogLevel.Trace);
                 e.LoadFromModFile<Texture2D>("assets/FireworkBurst.png", AssetLoadPriority.Medium);
             }
         }
@@ -425,7 +424,6 @@ namespace FireworksFestival
         {
             if (key.Equals("vlFireworkBurst", StringComparison.OrdinalIgnoreCase))
             {
-                monitorStatic.Log("Playing firework burst",LogLevel.Debug);
                 // Make sure there's enough arguments
                 if (split.Length < 4)
                 {
