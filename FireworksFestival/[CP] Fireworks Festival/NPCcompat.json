@@ -2,6 +2,7 @@
     "Changes": [
         // Add Jean and Jorts to festival
         {
+            "LogName": "Add Jorts",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -20,6 +21,7 @@
             }
         },
         {
+            "LogName": "Add Jean",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -39,6 +41,7 @@
         },
         // Give Jean and Jorts dialogue
         {
+            "LogName": "Add Jorts and Jean dialogue",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
@@ -51,6 +54,7 @@
         },
         // Add Jasper to festival
         {
+            "LogName": "Add Jasper",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -70,6 +74,7 @@
         },
         // Give Jasper dialogue
         {
+            "LogName": "Add Jasper dialogue",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
@@ -81,6 +86,7 @@
         },
         // Add MisterGinger to festival
         {
+            "LogName": "Add Mister Ginger",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -100,6 +106,7 @@
         },
         // Give MisterGinger dialogue
         {
+            "LogName": "Add Mister Ginger pre-The Event dialogue",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
@@ -111,6 +118,7 @@
             }
         },
         {
+            "LogName": "Add Mister Ginger post-The Event dialogue",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
@@ -123,6 +131,7 @@
         },
         // Add Jessie and Juliet to festival
         {
+            "LogName": "Add Jessie",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -141,6 +150,7 @@
             }
         },
         {
+            "LogName": "Add Juliet",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -160,6 +170,7 @@
         },
         // Give Jessie and Juliet dialogue
         {
+            "LogName": "Add Jessie and Juliet dialogue",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
@@ -172,6 +183,7 @@
         },
         // Add Alecto, Kevin, and Titania to festival
         {
+            "LogName": "Add Alecto",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -190,6 +202,7 @@
             }
         },
         {
+            "LogName": "Add KevinTheCrow",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -208,6 +221,7 @@
             }
         },
         {
+            "LogName": "Add TitaniaTheCrow",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "TextOperations": [
@@ -226,8 +240,8 @@
             }
         },
         // Give Alecto, Kevin, and Titania dialogue
-        // Give Jessie and Juliet dialogue
         {
+            "LogName": "Add Alecto, TitaniaTheCrow, and KevinTheCrow dialogue",
             "Action": "EditData",
             "Target": "Data/Festivals/Summer20",
             "Entries": {
@@ -237,6 +251,78 @@
             },
             "When": {
                 "HasMod": "ZoeDoll.NPCAlecto"
+            }
+        },
+        // Add Sterling, Henry, and Mia to festival
+        {
+            "LogName": "Add Sterling",
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Sterling 9 15 left",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "Himetarts.ARV.CP"
+            }
+        },
+        {
+            "LogName": "Add Henry",
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Henry 10 13 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "Himetarts.ARV.CP"
+            }
+        },
+        {
+            "LogName": "Add Mia",
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "TextOperations": [
+                {
+                    "Operation": "Append",
+                    "Target": [
+                        "Entries",
+                        "Set-Up_additionalCharacters"
+                    ],
+                    "Value": "Mia 11 14 down",
+                    "Delimiter": "/"
+                }
+            ],
+            "When": {
+                "HasMod": "Himetarts.ARV.CP"
+            }
+        },
+        // Give Sterling, Henry, and Mia dialogue
+        {
+            "LogName": "Add Sterling, Henry, and Mia dialogue",
+            "Action": "EditData",
+            "Target": "Data/Festivals/Summer20",
+            "Entries": {
+                "Sterling": "{{i18n:Sterling}}",
+                "Henry": "{{i18n:Henry}}",
+                "Mia": "{{i18n:Mia}}"
+            },
+            "When": {
+                "HasMod": "Himetarts.ARV.CP"
             }
         },
     ]

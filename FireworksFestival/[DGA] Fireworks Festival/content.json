@@ -597,7 +597,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -615,7 +615,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1000,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -633,7 +633,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1000,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -651,7 +651,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1000,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -669,7 +669,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1000,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -689,7 +689,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -707,7 +707,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -727,7 +727,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -745,7 +745,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -765,7 +765,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -783,7 +783,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -801,7 +801,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -819,7 +819,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -837,7 +837,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -857,7 +857,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -875,7 +875,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -893,7 +893,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -911,7 +911,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -931,7 +931,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -949,7 +949,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -967,7 +967,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -985,7 +985,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -1005,7 +1005,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -1023,7 +1023,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -1041,7 +1041,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -1061,7 +1061,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -1079,7 +1079,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [
@@ -1097,7 +1097,7 @@
   {
     "$ItemType": "MachineRecipe",
     "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
-    "MinutesToProcess": 10,
+    "MinutesToProcess": 1500,
     "StartWorkingSound": "Ship",
     "MachinePulseWhileWorking": true,
     "Ingredients": [

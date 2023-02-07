@@ -55,6 +55,8 @@
 	"Merchant": "Merchant: A lovely festival, isn't it? Well worth the trip.",
 	"FishingReward1": "Reward:",
 	"FishingReward2": "Carp",
+	"BirdieShop": "Finest fireworks this side of the Gem Sea.",
+	"FoxShop": "Trade your fishies for finery, dearie.",
 
 	// Letter text
 	"Letter1": "Dear @,",
@@ -75,5 +77,8 @@
 	"Alecto1": "The wizard thinks his hiding spot is the best, but mine is clearly better.",
 	"Alecto2": "Time to settle in and watch the show!",
 	"KevinTheCrow": "Kevin seems to have found a discarded yakisoba tray and is pecking intently at it. It's entirely empty.",
-	"TitaniaTheCrow": "Ca-caw!"
+	"TitaniaTheCrow": "Ca-caw!",
+	"Sterling": "...",
+	"Henry": "...",
+	"Mia": "...",
 }
