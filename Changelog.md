@@ -13,6 +13,7 @@
   * Clothing shop now sells certain hats too
   * Some NPCs slightly moved around
   * Fireworks show now bigger, better, and less jankily coded
+  * Fireworks license art improved
   * Support for some modded NPCs added
       * Jean and Jorts
       * Jasper
