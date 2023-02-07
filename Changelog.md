@@ -4,7 +4,7 @@
 
   * **Important:** The code has undergone a **major refactor** and **you must delete the mod in order to update it.**
   * DGA pack now separate
-  * i18n support added for CP portion
+  * i18n support added for CP portion (full i18n support now available as a result)
   * Fireworks explosions code refactored to support multiplayer (split screen unknown if supported)
   * Festival map revamped to add decorations and more suitable images (shaved ice, fried foods boat, etc)
   * Festival fox vendor added (with portrait)
