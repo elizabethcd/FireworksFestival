@@ -259,7 +259,9 @@ namespace FireworksFestival
                 // Fireworks shop
                 else if (e.Cursor.GrabTile.X == 25 && e.Cursor.GrabTile.Y == 39)
                 {
-                    ShopMenu purpleShop = new ShopMenu(purpleBoatStock, 0, null, ModEntry.postFireworkBuy, null, "STF.violetlizabet.FireworkShop");
+                    ShopMenu purpleShop = new ShopMenu(purpleBoatStock, 0, "Birdie", ModEntry.postFireworkBuy, null, "STF.violetlizabet.Fireworks");
+                    purpleShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie"), new Vector2(0,0), 1, "Birdie");
+                    purpleShop.potraitPersonDialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Birdie");
                     Game1.activeClickableMenu = purpleShop;
                 }
 
@@ -272,7 +274,10 @@ namespace FireworksFestival
                 // Yukata shop
                 else if ((e.Cursor.GrabTile.X == 34 || e.Cursor.GrabTile.X == 35) && e.Cursor.GrabTile.Y == 15)
                 {
-                    Game1.activeClickableMenu = new ShopMenu(clothingShopStock);
+                    ShopMenu clothesShop = new ShopMenu(clothingShopStock, 0, "FireworksFox", null, null, "STF.violetlizabet.FireworkClothing");
+                    clothesShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie"), new Vector2(0, 0), 1, "FireworksFox");
+                    clothesShop.potraitPersonDialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Fox");
+                    Game1.activeClickableMenu = clothesShop;
                 }
             }            
         }
