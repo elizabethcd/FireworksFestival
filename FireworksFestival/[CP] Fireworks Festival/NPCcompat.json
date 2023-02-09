@@ -254,76 +254,76 @@
             }
         },
         // Add Sterling, Henry, and Mia to festival
-        {
-            "LogName": "Add Sterling",
-            "Action": "EditData",
-            "Target": "Data/Festivals/Summer20",
-            "TextOperations": [
-                {
-                    "Operation": "Append",
-                    "Target": [
-                        "Entries",
-                        "Set-Up_additionalCharacters"
-                    ],
-                    "Value": "Sterling 9 15 left",
-                    "Delimiter": "/"
-                }
-            ],
-            "When": {
-                "HasMod": "Himetarts.ARV.CP"
-            }
-        },
-        {
-            "LogName": "Add Henry",
-            "Action": "EditData",
-            "Target": "Data/Festivals/Summer20",
-            "TextOperations": [
-                {
-                    "Operation": "Append",
-                    "Target": [
-                        "Entries",
-                        "Set-Up_additionalCharacters"
-                    ],
-                    "Value": "Henry 10 13 down",
-                    "Delimiter": "/"
-                }
-            ],
-            "When": {
-                "HasMod": "Himetarts.ARV.CP"
-            }
-        },
-        {
-            "LogName": "Add Mia",
-            "Action": "EditData",
-            "Target": "Data/Festivals/Summer20",
-            "TextOperations": [
-                {
-                    "Operation": "Append",
-                    "Target": [
-                        "Entries",
-                        "Set-Up_additionalCharacters"
-                    ],
-                    "Value": "Mia 11 14 down",
-                    "Delimiter": "/"
-                }
-            ],
-            "When": {
-                "HasMod": "Himetarts.ARV.CP"
-            }
-        },
+        // {
+        //     "LogName": "Add Sterling",
+        //     "Action": "EditData",
+        //     "Target": "Data/Festivals/Summer20",
+        //     "TextOperations": [
+        //         {
+        //             "Operation": "Append",
+        //             "Target": [
+        //                 "Entries",
+        //                 "Set-Up_additionalCharacters"
+        //             ],
+        //             "Value": "Sterling 9 15 left",
+        //             "Delimiter": "/"
+        //         }
+        //     ],
+        //     "When": {
+        //         "HasMod": "Himetarts.ARV.CP"
+        //     }
+        // },
+        // {
+        //     "LogName": "Add Henry",
+        //     "Action": "EditData",
+        //     "Target": "Data/Festivals/Summer20",
+        //     "TextOperations": [
+        //         {
+        //             "Operation": "Append",
+        //             "Target": [
+        //                 "Entries",
+        //                 "Set-Up_additionalCharacters"
+        //             ],
+        //             "Value": "Henry 10 13 down",
+        //             "Delimiter": "/"
+        //         }
+        //     ],
+        //     "When": {
+        //         "HasMod": "Himetarts.ARV.CP"
+        //     }
+        // },
+        // {
+        //     "LogName": "Add Mia",
+        //     "Action": "EditData",
+        //     "Target": "Data/Festivals/Summer20",
+        //     "TextOperations": [
+        //         {
+        //             "Operation": "Append",
+        //             "Target": [
+        //                 "Entries",
+        //                 "Set-Up_additionalCharacters"
+        //             ],
+        //             "Value": "Mia 11 14 down",
+        //             "Delimiter": "/"
+        //         }
+        //     ],
+        //     "When": {
+        //         "HasMod": "Himetarts.ARV.CP"
+        //     }
+        // },
         // Give Sterling, Henry, and Mia dialogue
-        {
-            "LogName": "Add Sterling, Henry, and Mia dialogue",
-            "Action": "EditData",
-            "Target": "Data/Festivals/Summer20",
-            "Entries": {
-                "Sterling": "{{i18n:Sterling}}",
-                "Henry": "{{i18n:Henry}}",
-                "Mia": "{{i18n:Mia}}"
-            },
-            "When": {
-                "HasMod": "Himetarts.ARV.CP"
-            }
-        },
+        // {
+        //     "LogName": "Add Sterling, Henry, and Mia dialogue",
+        //     "Action": "EditData",
+        //     "Target": "Data/Festivals/Summer20",
+        //     "Entries": {
+        //         "Sterling": "{{i18n:Sterling}}",
+        //         "Henry": "{{i18n:Henry}}",
+        //         "Mia": "{{i18n:Mia}}"
+        //     },
+        //     "When": {
+        //         "HasMod": "Himetarts.ARV.CP"
+        //     }
+        // },
     ]
 }
