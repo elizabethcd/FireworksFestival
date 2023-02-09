@@ -349,7 +349,7 @@ namespace FireworksFestival
         {
             // Not our item, we don't care
             string itemID = DGA_API.GetDGAItemId(__instance);
-            if (itemID == null || !(itemID.Contains(contentPackModID, StringComparison.OrdinalIgnoreCase) && itemID.Contains("Firework", StringComparison.OrdinalIgnoreCase)))
+            if (itemID == null || !(itemID.Contains(contentPackModID, StringComparison.OrdinalIgnoreCase) && itemID.EndsWith("Firework", StringComparison.OrdinalIgnoreCase)))
             {
                 return true;
             }

@@ -548,7 +548,7 @@
       {
         "KnownByDefault": true,
         "Conditions": {
-          "Query: {{SkillLevel:Farming}} >= 6": true
+          "Query: {{SkillLevel:Mining}} >= 6": true
         }
       }
     ]
@@ -587,7 +587,7 @@
       {
         "KnownByDefault": true,
         "Conditions": {
-          "Query: {{SkillLevel:Farming}} >= 6": true
+          "Query: {{SkillLevel:Mining}} >= 6": true
         }
       }
     ]
