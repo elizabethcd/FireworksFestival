@@ -22,6 +22,7 @@ Voyage of the Fireworks Festival
 # How to Install This Mod
 * Install Dynamic Game Assets, Content Patcher, and their dependencies
 * Download this mod from Nexus: https://www.nexusmods.com/stardewvalley/mods/15261
+* If you are updating the mod, please **delete the old mod entirely** first
 * Unzip and place into Mods folder
 
 # Fireworks Crafting
@@ -59,6 +60,7 @@ To translate this mod, there are *exactly* 2 files that must be translated. Ther
 
 # Mod Compatibility
 * This should be generally compatible with other mods, including recolors
+* There is built-in NPC compatibility for: Jasper, Jessie and Juliet, Mister Ginger, Jean and Jorts. There is planned future compatibility for Always Raining in the Valley NPCs. If you have an NPC mod, you can look through the NPCcompat.json for examples of how to add your NPC to the map and add dialogue. The .tmx file for the map has red dots on the Paths layer where NPCs currently stand, and in the future it is planned to add the festival map to the [Custom NPC Tiles spreadsheet](https://stardewmodding.miraheze.org/wiki/Custom_NPC_Tiles).
 * Unless another mod adds a festival on Summer 20, you should be good to go (I checked the mods I know of that add festivals, Surfing Festival, Ridgeside, and SVE all seem to not have festivals on this day.)
 * This is compatible with multiplayer, but may not be compatible with splitscreen
 * This is not compatible with mobile
