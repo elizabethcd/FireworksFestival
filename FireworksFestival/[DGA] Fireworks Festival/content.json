@@ -657,6 +657,24 @@
     "Ingredients": [
       {
         "Type": "VanillaObject",
+        "Value": 747, // Rotten Plant
+        "Quantity": 1
+      }
+    ],
+    "Result": {
+      "Type": "DGAItem",
+      "Value": "violetlizabet.DGA.FireworksFestival/Brimstone"
+    }
+  },
+  {
+    "$ItemType": "MachineRecipe",
+    "MachineId": "violetlizabet.DGA.FireworksFestival/Chemizer",
+    "MinutesToProcess": 1000,
+    "StartWorkingSound": "Ship",
+    "MachinePulseWhileWorking": true,
+    "Ingredients": [
+      {
+        "Type": "VanillaObject",
         "Value": 556, // Orpiment
         "Quantity": 1
       }

@@ -211,7 +211,12 @@ namespace FireworksFestival
             {
                 return;
             }
+            // Exit if something is in progress/player shouldn't be able to interact with things
             if (Game1.activeClickableMenu != null)
+            {
+                return;
+            }
+            if (!Context.CanPlayerMove)
             {
                 return;
             }
