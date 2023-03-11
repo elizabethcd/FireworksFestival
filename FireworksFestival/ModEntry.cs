@@ -49,11 +49,21 @@ namespace FireworksFestival
         private static string explodeColorString = "violetlizabet.FireworksFestival/explodeColor";
         private static string fishingGameString = "violetlizabet.FireworksFestival/fishingGame";
         private static string thisModID;
-        private static string licenseLetter = "vl.FireworksFestival";
+        private static string festivalLetter = "vl.FireworksFestival";
+        private static string licenseLetter = "vl.fireworkslicense";
         private static string msgTypeRemove = "fireworkRemovalMessage";
         private static string msgTypeAdd = "fireworkAddMessage";
+        private static string chemizerRecipeName = "FireworksFestivalChemizer";
+        private static string blackPowderRecipeName = "FireworksFestivalBlackPowder";
+        private static string redFireworkRecipeName = "FireworksFestivalRedFirework";
+        private static string orangeFireworkRecipeName = "FireworksFestivalOrangeFirework";
+        private static string yellowFireworkRecipeName = "FireworksFestivalYellowFirework";
+        private static string greenFireworkRecipeName = "FireworksFestivalGreenFirework";
+        private static string blueFireworkRecipeName = "FireworksFestivalBlueFirework";
+        private static string purpleFireworkRecipeName = "FireworksFestivalPurpleFirework";
+        private static string whiteFireworkRecipeName = "FireworksFestivalWhiteFirework";
 
-        // Firework names
+        // DGA item names
         private static string redFWName = contentPackModID  + "/RedFirework";
         private static string orangeFWName = contentPackModID + "/OrangeFirework";
         private static string yellowFWName = contentPackModID + "/YellowFirework";
@@ -194,11 +204,26 @@ namespace FireworksFestival
             {
                 Monitor.Log("Adding festival mail", LogLevel.Trace);
 
-                Game1.player.mailReceived.Remove(licenseLetter);
-                Game1.addMail(licenseLetter);
+                Game1.player.mailReceived.Remove(festivalLetter);
+                Game1.addMail(festivalLetter);
             }
 
             fireworkLocs.Clear();
+
+            // Forcibly add some recipes if needed
+            if (Game1.player.miningLevel.Value >= 6)
+            {
+                if (!Game1.player.craftingRecipes.ContainsKey(chemizerRecipeName))
+                {
+                    Monitor.Log("Adding chemizer recipe directly", LogLevel.Trace);
+                    Game1.player.craftingRecipes.Add(chemizerRecipeName, 0);
+                }
+                if (!Game1.player.craftingRecipes.ContainsKey(blackPowderRecipeName))
+                {
+                    Monitor.Log("Adding black powder recipe directly", LogLevel.Trace);
+                    Game1.player.craftingRecipes.Add(blackPowderRecipeName, 0);
+                }
+            }
         }
 
         private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
@@ -721,6 +746,13 @@ namespace FireworksFestival
             if (DGA_API.GetDGAItemId(item).Equals(fireworksLicenseName,StringComparison.OrdinalIgnoreCase) && !Game1.player.mailReceived.Contains(licenseLetter))
             {
                 Game1.player.mailReceived.Add(licenseLetter);
+                addCraftingRecipe(redFireworkRecipeName);
+                addCraftingRecipe(orangeFireworkRecipeName);
+                addCraftingRecipe(yellowFireworkRecipeName);
+                addCraftingRecipe(greenFireworkRecipeName);
+                addCraftingRecipe(blueFireworkRecipeName);
+                addCraftingRecipe(purpleFireworkRecipeName);
+                addCraftingRecipe(whiteFireworkRecipeName);
             }
             return false;
         }
@@ -785,6 +817,14 @@ namespace FireworksFestival
             stock.Add(new StardewValley.Object(636, 1), new int[2] { 5000, 1 });
             stock.Add(new StardewValley.Object(268, 1), new int[2] { 5000, 1 });
             return stock;
+        }
+
+        private static void addCraftingRecipe(string recipeName)
+        {
+            if (!Game1.player.craftingRecipes.ContainsKey(recipeName))
+            {
+                Game1.player.craftingRecipes.Add(recipeName, 0);
+            }
         }
     }
 }
