@@ -226,7 +226,7 @@ namespace FireworksFestival
             }
         }
 
-        private void OnButtonPressed(object sender, ButtonPressedEventArgs e, IInputHelper input)
+        private void OnButtonPressed(object sender, ButtonPressedEventArgs e)
         {
             if (Game1.CurrentEvent == null)
             {
@@ -251,7 +251,7 @@ namespace FireworksFestival
                 // Submarine warp
                 if (e.Cursor.GrabTile.X == 5 && e.Cursor.GrabTile.Y == 34)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     Response[] responses2 = new Response[2]
                     {
                         new Response("Play", Game1.content.LoadString("Strings\\StringsFromCSFiles:Event.cs.1662")),
@@ -264,7 +264,7 @@ namespace FireworksFestival
                 // Free shaved ice
                 else if ((e.Cursor.GrabTile.X == 13 || e.Cursor.GrabTile.X == 14) && e.Cursor.GrabTile.Y == 37)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     if (!hasReceivedFreeGift)
                     {
                         Game1.currentLocation.createQuestionDialogue(Game1.content.LoadString("Strings\\Locations:BeachNightMarket_GiftGiverQuestion"), Game1.currentLocation.createYesNoResponses(), "GiftGiverQuestion");
@@ -278,21 +278,21 @@ namespace FireworksFestival
                 // Traveling merchant
                 else if (e.Cursor.GrabTile.X == 39 && e.Cursor.GrabTile.Y == 30)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     Game1.activeClickableMenu = new ShopMenu(Utility.getTravelingMerchantStock((int)(Game1.uniqueIDForThisGame + Game1.stats.DaysPlayed)), 0, "TravelerSummerNightMarket", Utility.onTravelingMerchantShopPurchase);
                 }
 
                 // Fried foods shop
                 else if (e.Cursor.GrabTile.X == 19 && e.Cursor.GrabTile.Y == 33)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     Game1.activeClickableMenu = new ShopMenu(blueBoatStock);
                 }
 
                 // Fireworks shop
                 else if (e.Cursor.GrabTile.X == 25 && e.Cursor.GrabTile.Y == 39)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     ShopMenu purpleShop = new ShopMenu(purpleBoatStock, 0, "Birdie", ModEntry.postFireworkBuy, null, "STF.violetlizabet.Fireworks");
                     purpleShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie"), new Vector2(0,0), 1, "Birdie");
                     string dialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Birdie");
@@ -303,14 +303,14 @@ namespace FireworksFestival
                 // Fruits shop
                 else if ((e.Cursor.GrabTile.X == 47 || e.Cursor.GrabTile.X == 48) && e.Cursor.GrabTile.Y == 34)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     Game1.activeClickableMenu = new ShopMenu(brownBoatStock);
                 }
 
                 // Yukata shop
                 else if ((e.Cursor.GrabTile.X == 34 || e.Cursor.GrabTile.X == 35) && e.Cursor.GrabTile.Y == 15)
                 {
-                    suppressClick(input);
+                    suppressClick();
                     ShopMenu clothesShop = new ShopMenu(clothingShopStock, 0, "FireworksFox", null, null, "STF.violetlizabet.FireworkClothing");
                     clothesShop.portraitPerson = new NPC(new AnimatedSprite("Characters\\Birdie"), new Vector2(0, 0), 1, "FireworksFox");
                     string dialogue = Game1.content.LoadString("Strings\\StringsFromCSFiles:vlFireworks.Fox");
@@ -834,10 +834,12 @@ namespace FireworksFestival
             }
         }
 
-        private static void suppressClick(IInputHelper input)
+        private static void suppressClick()
         {
-            input.Suppress(Game1.options.actionButton[0].ToSButton());
-            input.Suppress(Game1.options.useToolButton[0].ToSButton());
+            helperStatic.Input.Suppress(Game1.options.actionButton[0].ToSButton());
+            helperStatic.Input.Suppress(Game1.options.useToolButton[0].ToSButton());
+            helperStatic.Input.Suppress(SButton.MouseLeft);
+            helperStatic.Input.Suppress(SButton.MouseRight);
         }
     }
 }
