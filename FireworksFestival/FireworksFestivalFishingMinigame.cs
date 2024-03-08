@@ -128,8 +128,7 @@ namespace StardewValley.Minigames
                     {
                         Game1.playSound("reward");
                         this.carpWon = (this.score + 5) / 10 * 6;
-                        this.carpWon *= 2;
-                        this.carpWon = this.carpWon / 100;
+                        this.carpWon = this.carpWon / 20;
                         Game1.player.festivalScore += this.carpWon;
                     }
                     else

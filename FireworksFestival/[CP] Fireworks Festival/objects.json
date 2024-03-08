@@ -447,5 +447,27 @@
                 "{{MainModID}}.BlackPowder": "{{MainModID}}.Niter 1 {{MainModID}}.Brimstone 1 382 5/Field/{{MainModID}}.BlackPowder/false/null/",
             }
         },
+        // Add gift tastes
+        {
+            "LogName": "Add gift tastes for fireworks",
+            "Action": "EditData",
+            "Target": "Data/NPCGiftTastes",
+            "TextOperations": [
+                // Everyone likes fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Entries", "Universal_Like"],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
+                    "Delimiter": " "
+                },
+                // Kent hates fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Entries", "Kent", 7],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
+                    "Delimiter": " "
+                }
+            ]
+        }
     ]
 }

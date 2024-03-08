@@ -196,52 +196,49 @@
             "LogName": "Add fishing game location with fish",
             "Action": "EditData",
             "Target": "Data/Locations",
+            "TargetField": ["fishingGame"],
             "Entries": {
-                "fireworksFestivalFishingGame": {
-                  "DisplayName": "FireworksFestivalFishingGame",
-                  "DefaultArrivalTile": {
+                "DefaultArrivalTile": {
                     "X": 14,
                     "Y": 15
-                  },
-                  "ExcludeFromNpcPathfinding": true,
-                  "Fish": [
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)129",
-                      "ItemId": "(O)129",
-                    },
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)130",
-                      "ItemId": "(O)130",
-                    },
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)131",
-                      "ItemId": "(O)131",
-                    },
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)146",
-                      "ItemId": "(O)146",
-                    },
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)147",
-                      "ItemId": "(O)147",
-                    },
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)148",
-                      "ItemId": "(O)148",
-                    },
-                    {
-                      "Chance": 1.0,
-                      "Id": "(O)708",
-                      "ItemId": "(O)708",
-                    }
-                  ],
                 },
+                "Fish": [
+                    {
+                        "Id": "(O)129",
+                        "ItemId": "(O)129",
+                        "IgnoreFishDataRequirements": true
+                    },
+                    {
+                        "Id": "(O)130",
+                        "ItemId": "(O)130",
+                        "IgnoreFishDataRequirements": true
+                    },
+                    {
+                        "Id": "(O)131",
+                        "ItemId": "(O)131",
+                        "IgnoreFishDataRequirements": true
+                    },
+                    {
+                        "Id": "(O)146",
+                        "ItemId": "(O)146",
+                        "IgnoreFishDataRequirements": true
+                    },
+                    {
+                        "Id": "(O)147",
+                        "ItemId": "(O)147",
+                        "IgnoreFishDataRequirements": true
+                    },
+                    {
+                        "Id": "(O)148",
+                        "ItemId": "(O)148",
+                        "IgnoreFishDataRequirements": true
+                    },
+                    {
+                        "Id": "(O)708",
+                        "ItemId": "(O)708",
+                        "IgnoreFishDataRequirements": true
+                    }
+                ],
             }
         },
         // Change fishing game reward
