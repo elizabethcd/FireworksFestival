@@ -191,6 +191,10 @@
                     "SpriteIndex": 8,
                     "ExcludeFromShippingCollection": true,
                     "ExcludeFromRandomSale": true,
+                    "ContextTags": [
+                        "not_giftable",
+                        "prevent_loss_on_death"
+                    ]
                 }
             }
         },
@@ -212,7 +216,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "color_red",
-                        "ingredient_metal_salt"
+                        "ingredient_metal_salt",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.IronSalt": {
@@ -227,7 +232,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "color_orange",
-                        "ingredient_metal_salt"
+                        "ingredient_metal_salt",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.BariumSalt": {
@@ -242,7 +248,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "color_green",
-                        "ingredient_metal_salt"
+                        "ingredient_metal_salt",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.CopperSalt": {
@@ -257,7 +264,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "color_blue",
-                        "ingredient_metal_salt"
+                        "ingredient_metal_salt",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.IridiumSalt": {
@@ -272,7 +280,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "color_purple",
-                        "ingredient_metal_salt"
+                        "ingredient_metal_salt",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.MagnesiumSalt": {
@@ -287,7 +296,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "color_white",
-                        "ingredient_metal_salt"
+                        "ingredient_metal_salt",
+                        "not_museum_donatable"
                     ],
                 },
             }
@@ -326,7 +336,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "ingredient_niter",
-                        "color_white"
+                        "color_white",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.Brimstone": {
@@ -341,7 +352,8 @@
                     "ExcludeFromShippingCollection": true,
                     "ContextTags": [
                         "ingredient_brimstone",
-                        "color_yellow"
+                        "color_yellow",
+                        "not_museum_donatable"
                     ],
                 },
                 "{{MainModID}}.BlackPowder": {
@@ -356,7 +368,8 @@
                     "ExcludeFromShippingCollection": false,
                     "ContextTags": [
                         "ingredient_black_powder",
-                        "color_black"
+                        "color_black",
+                        "not_museum_donatable"
                     ],
                 },
             }
