@@ -460,13 +460,62 @@
                     "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
                     "Delimiter": " "
                 },
-                // Kent hates fireworks
+                // Kent hates fireworks and black powder
                 {
                     "Operation": "Append",
-                    "Target": ["Entries", "Kent", 7],
+                    "Target": ["Fields", "Kent", 7],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework {{MainModID}}.BlackPowder",
+                    "Delimiter": " "
+                },
+                // Abigail loves purple fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Abigail", 1],
+                    "Value": "{{MainModID}}.PurpleFirework",
+                    "Delimiter": " "
+                },
+                // Dwarf loves fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Dwarf", 1],
                     "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
                     "Delimiter": " "
-                }
+                },
+                // Leo loves fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Leo", 1],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
+                    "Delimiter": " "
+                },
+                // Vincent loves fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Vincent", 1],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
+                    "Delimiter": " "
+                },
+                // Jas loves fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Jas", 1],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
+                    "Delimiter": " "
+                },
+                // Wizard loves fireworks
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Wizard", 1],
+                    "Value": "{{MainModID}}.RedFirework {{MainModID}}.OrangeFirework {{MainModID}}.YellowFirework {{MainModID}}.GreenFirework {{MainModID}}.BlueFirework {{MainModID}}.PurpleFirework {{MainModID}}.WhiteFirework",
+                    "Delimiter": " "
+                },
+                // Jas loves shaved ice
+                {
+                    "Operation": "Append",
+                    "Target": ["Fields", "Jas", 1],
+                    "Value": "{{MainModID}}.ShavedIce",
+                    "Delimiter": " "
+                },
             ]
         }
     ]

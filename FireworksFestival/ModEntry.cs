@@ -31,7 +31,7 @@ namespace FireworksFestival
         private static Multiplayer multiplayer;
 
         // Useful strings
-        private static string thisModID;
+        private static string thisModID = "violetlizabet.FireworksFestival";
         private static string fireworkTexLoc = $"Mods/{thisModID}/Fireworks";
         private static string burstTexLoc = $"Mods/{thisModID}/FireworkBurst";
         private static string fireworkTexLocInGame = $"Mods\\{thisModID}\\Fireworks";
@@ -122,6 +122,12 @@ namespace FireworksFestival
                prefix: new HarmonyMethod(typeof(ModEntry), nameof(ModEntry.broadcastSprites_Prefix))
             );
 
+            // Add fireworks recipes when purchasing fireworks license
+            harmony.Patch(
+                original: AccessTools.Method(typeof(Item), nameof(Item.actionWhenPurchased)),
+                postfix: new HarmonyMethod(typeof(ModEntry), nameof(ModEntry.actionWhenPurchased_Postfix))
+            );
+
             var Game1_multiplayer = this.Helper.Reflection.GetField<Multiplayer>(typeof(Game1), "multiplayer").GetValue();
             multiplayer = Game1_multiplayer;
 
@@ -154,12 +160,51 @@ namespace FireworksFestival
                 {
                     Monitor.Log("Adding chemizer recipe directly", LogLevel.Trace);
                     Game1.player.craftingRecipes.Add(chemizerRecipeName, 0);
+                    removeCraftingRecipe("FireworksFestivalChemizer");
                 }
                 if (!Game1.player.craftingRecipes.ContainsKey(blackPowderRecipeName))
                 {
                     Monitor.Log("Adding black powder recipe directly", LogLevel.Trace);
                     Game1.player.craftingRecipes.Add(blackPowderRecipeName, 0);
+                    removeCraftingRecipe("FireworksFestivalBlackPowder");
                 }
+            }
+
+            // Migrate old recipes if needed
+            if (removeCraftingRecipe("FireworksFestivalRedFirework"))
+            {
+                Monitor.Log("Migrating old red firework recipe", LogLevel.Trace);
+                addCraftingRecipe(redFireworkRecipeName);
+            }
+            if (removeCraftingRecipe("FireworksFestivalOrangeFirework"))
+            {
+                Monitor.Log("Migrating old orange firework recipe", LogLevel.Trace);
+                addCraftingRecipe(orangeFireworkRecipeName);
+            }
+            if (removeCraftingRecipe("FireworksFestivalYellowFirework"))
+            {
+                Monitor.Log("Migrating old yellow firework recipe", LogLevel.Trace);
+                addCraftingRecipe(yellowFireworkRecipeName);
+            }
+            if (removeCraftingRecipe("FireworksFestivalGreenFirework"))
+            {
+                Monitor.Log("Migrating old green firework recipe", LogLevel.Trace);
+                addCraftingRecipe(greenFireworkRecipeName);
+            }
+            if (removeCraftingRecipe("FireworksFestivalBlueFirework"))
+            {
+                Monitor.Log("Migrating old blue firework recipe", LogLevel.Trace);
+                addCraftingRecipe(blueFireworkRecipeName);
+            }
+            if (removeCraftingRecipe("FireworksFestivalPurpleFirework"))
+            {
+                Monitor.Log("Migrating old purple firework recipe", LogLevel.Trace);
+                addCraftingRecipe(purpleFireworkRecipeName);
+            }
+            if (removeCraftingRecipe("FireworksFestivalWhiteFirework"))
+            {
+                Monitor.Log("Migrating old white firework recipe", LogLevel.Trace);
+                addCraftingRecipe(whiteFireworkRecipeName);
             }
         }
 
@@ -441,25 +486,6 @@ namespace FireworksFestival
             }
         }
 
-        // Move player to right starting location
-        //private static void startMe_Postfix()
-        //{
-        //    if (isSummer && Game1.dayOfMonth == 20)
-        //    {
-        //        Game1.player.Position = new Vector2(14f, 15f) * 64f;
-        //        Game1.player.festivalScore = 0;
-        //    }
-        //}
-
-        // Move player to right ending location
-        //private static void gameDoneAfterFade_Postfix(FishingGame __instance, int ___showResultsTimer)
-        //{
-        //    if (isSummer && Game1.dayOfMonth == 20)
-        //    {
-        //        Game1.player.Position = new Vector2(5f, 36f) * 64f;
-        //    }
-        //}
-
         // Make it actually register the fish caught
         private static void caughtFish_Postfix(Event __instance, string itemId, int size)
         {
@@ -597,6 +623,22 @@ namespace FireworksFestival
             }
         }
 
+        public static void actionWhenPurchased_Postfix(Item __instance)
+        {
+            monitorStatic.Log($"Post buy {__instance.Name}", LogLevel.Trace);
+            if (__instance.QualifiedItemId.Equals("(O)" + thisModID + ".FireworksLicense", StringComparison.OrdinalIgnoreCase) && !Game1.player.mailReceived.Contains(licenseLetter))
+            {
+                Game1.player.mailReceived.Add(licenseLetter);
+                addCraftingRecipe(redFireworkRecipeName);
+                addCraftingRecipe(orangeFireworkRecipeName);
+                addCraftingRecipe(yellowFireworkRecipeName);
+                addCraftingRecipe(greenFireworkRecipeName);
+                addCraftingRecipe(blueFireworkRecipeName);
+                addCraftingRecipe(purpleFireworkRecipeName);
+                addCraftingRecipe(whiteFireworkRecipeName);
+            }
+        }
+
         private static Rectangle getFireworksRect(Color color)
         {
             if (color.Equals(Color.Red))
@@ -626,29 +668,22 @@ namespace FireworksFestival
             return new Rectangle(96, 0, 16, 16);
         }
 
-        public static bool postFireworkBuy(ISalable item, Farmer farmer, int amount)
-        {
-            monitorStatic.Log($"Post buy {item.Name}", LogLevel.Trace);
-            if (item.QualifiedItemId.Equals("(O)" + thisModID + ".FireworksLicense",StringComparison.OrdinalIgnoreCase) && !Game1.player.mailReceived.Contains(licenseLetter))
-            {
-                Game1.player.mailReceived.Add(licenseLetter);
-                addCraftingRecipe(redFireworkRecipeName);
-                addCraftingRecipe(orangeFireworkRecipeName);
-                addCraftingRecipe(yellowFireworkRecipeName);
-                addCraftingRecipe(greenFireworkRecipeName);
-                addCraftingRecipe(blueFireworkRecipeName);
-                addCraftingRecipe(purpleFireworkRecipeName);
-                addCraftingRecipe(whiteFireworkRecipeName);
-            }
-            return false;
-        }
-
         private static void addCraftingRecipe(string recipeName)
         {
             if (!Game1.player.craftingRecipes.ContainsKey(recipeName))
             {
                 Game1.player.craftingRecipes.Add(recipeName, 0);
             }
+        }
+
+        private static bool removeCraftingRecipe(string recipeName)
+        {
+            if (Game1.player.craftingRecipes.ContainsKey(recipeName))
+            {
+                Game1.player.craftingRecipes.Remove(recipeName);
+                return true;
+            }
+            return false;
         }
 
         private static void suppressClick()
